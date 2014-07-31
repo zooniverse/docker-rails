@@ -7,8 +7,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y -q install nginx-extras passenger supervisor && \
     mkdir -p /var/log/supervisor && \
-    rm /etc/nginx/sites-enabled/default && \
-    gem install bundler
+    rm /etc/nginx/sites-enabled/default
 
 ADD image-fs/ /
 
