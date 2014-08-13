@@ -1,23 +1,5 @@
-# DOCKER_VERSION 0.9.0
-# VERSION 0.1.0
+FROM zooniverse/passenger
 
-FROM edpaget/passenger:latest
-MAINTAINER Edward Paget <ed@zooniverse.org>
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y -q install build-essential ruby1.9.1 ruby1.9.1-dev imagemagick libsqlite3-dev libmagickwand-dev libcurl3 libxml2 libxslt1-dev libcurl4-gnutls-dev git-core mysql-client libmysqlclient-dev
-
-RUN gem install bundler
-WORKDIR /rails
-ADD Gemfile /rails/Gemfile
-ADD Gemfile.lock /rails/Gemfile.lock
-ADD /vendor/ /rails/vendor
-RUN bundle install --without development test
-
-ADD ./ /rails
-
-ENV RACK_ENV production
-ENV RAILS_ENV production
-
-WORKDIR /
-
-VOLUME ["/rails/log"]
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y -q install build-essential ruby1.9.1 ruby1.9.1-dev imagemagick libsqlite3-dev libmagickwand-dev libcurl3 libxml2 libxslt1-dev libcurl4-gnutls-dev git-core mysql-client libmysqlclient-dev && \
+    gem install bundler
