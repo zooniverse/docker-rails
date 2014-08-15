@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     cd ruby-1.8.7-p370 && \
     ./configure && make && make install && \
     cd .. && rm -rf ruby-1.8.7-p370 && \
+    update-alternatives --install /usr/bin/ruby ruby /usr/local/bin/ruby 99 && \
     wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.22.tgz && \
     tar -xvzf rubygems-1.8.22.tgz && \
     cd rubygems-1.8.22 && \
