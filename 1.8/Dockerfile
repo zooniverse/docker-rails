@@ -13,5 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     tar -xvzf rubygems-1.8.22.tgz && \
     cd rubygems-1.8.22 && \
     ruby setup.rb && \
+    cd .. && rm -rf rubygems-1.8.22.tgz rubygems-1.8.22 && \
+    update-alternatives --install /usr/bin/gem gem /usr/local/bin/gem 99 && \
     gem update --system 1.7.2 && \
     gem install bundler
