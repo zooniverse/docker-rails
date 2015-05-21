@@ -1,4 +1,4 @@
-FROM zooniverse/passenger
+FROM zooniverse/passenger:base-passenger4
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
