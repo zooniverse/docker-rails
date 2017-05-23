@@ -38,6 +38,9 @@ do
   esac
 done
 
+SECRETS_ENV_FILE=${SECRETS_ENV_FILE:-/run/secrets/environment}
+[ -f $SECRETS_ENV_FILE ] && eval $(sed 's/^/export /' $SECRETS_ENV_FILE)
+
 if [[ -n $CONFIG_PATH ]];
 then
   if [[ "$CONFIG_PATH" != */ ]]; 
@@ -56,4 +59,4 @@ fi
 
 chown -R www-data:www-data /rails
 
-/usr/bin/supervisord
+exec /usr/bin/supervisord
