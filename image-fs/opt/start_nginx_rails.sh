@@ -57,7 +57,10 @@ then
   bundle exec rake assets:precompile
 fi
 
-rm /rails/log/production.log
+if [ -f /rails/log/production.log ]
+then
+    rm /rails/log/production.log
+fi
 ln -s /dev/stdout /rails/log/production.log
 
 chown -R www-data:www-data /rails
