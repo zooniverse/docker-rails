@@ -11,8 +11,6 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&
 
 ADD image-fs/ /
 
-VOLUME ["/var/log/nginx", "/var/log/supervisor", "/rails/log/"]
-
 EXPOSE 80
 ENTRYPOINT ["./opt/start_nginx_rails.sh"]
 

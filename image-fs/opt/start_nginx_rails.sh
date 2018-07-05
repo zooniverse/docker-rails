@@ -57,6 +57,9 @@ then
   bundle exec rake assets:precompile
 fi
 
+rm /rails/log/production.log
+ln -s /dev/stdout /rails/log/production.log
+
 chown -R www-data:www-data /rails
 
 exec /usr/bin/supervisord
