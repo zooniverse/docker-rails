@@ -61,6 +61,7 @@ if [ -f /rails/log/production.log ]
 then
     rm /rails/log/production.log
 fi
+mkdir -p /rails/log/
 ln -s /dev/stdout /rails/log/production.log
 
 chown -R www-data:www-data /rails
